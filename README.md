@@ -60,7 +60,7 @@ HortonWorks Sandbox Virtual machine was used to configure Hadoop. VMware was use
 
 ## AWS
 
-The program was also deployed to the AWS EMR (Elastic MapReduce). Please find the video of the same here:
+The program was also deployed to the AWS EMR (Elastic MapReduce)[NOTE: Application had not finished execution when the video was created]. Please find the video of the same here:
 
-[Amazon EMR-Youtube](https://youtu.be/T5GnfcQZaTU) 
+[Spark Amazon EMR-Youtube](https://youtu.be/_KoxzR7b5oQ) 
 
