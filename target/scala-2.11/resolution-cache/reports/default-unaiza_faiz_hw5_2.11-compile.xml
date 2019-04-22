@@ -7,7 +7,7 @@
 		revision="0.1"
 		conf="compile"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20190420141321"/>
+		date="20190420162236"/>
 	<dependencies>
 		<module organisation="com.databricks" name="spark-xml_2.11">
 			<revision name="0.5.0" status="release" pubdate="20181230095645" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/databricks/spark-xml" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="134">

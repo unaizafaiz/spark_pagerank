@@ -2,6 +2,8 @@ import scala.xml.XML
 import java.util
 
 import org.apache.hadoop.io.Text
+import org.slf4j.{Logger, LoggerFactory}
+
 import scala.collection.JavaConverters._
 import scala.io.Source
 
@@ -11,6 +13,8 @@ import scala.io.Source
 
  object Utility{
 
+  val logger: Logger = LoggerFactory.getLogger(getClass)
+
   /**
     * Parse XML and get all edges between two nodes produced in a publication
     * @param value: Mapper ValueIN
@@ -18,6 +22,7 @@ import scala.io.Source
     */
    def parse(value: Text): List[Text] = {
 
+     logger.info("Parse the text: "+value)
      //getting professors that are from UIC
      val uicProflist = profLookup()
      val text = replaceUnicode(value)
@@ -63,6 +68,8 @@ import scala.io.Source
      val array = listAuthors.toArray()
      val list = array.toList.map(_.asInstanceOf[Text])
 
+     logger.info("Found list: "+list)
+
       return list
     }
 
@@ -72,6 +79,7 @@ import scala.io.Source
     */
   def profLookup(): util.ArrayList[String] = {
 
+    logger.info("In profLookup()")
     val uicProflist = new util.ArrayList[String]()
     val fileStream = getClass.getResourceAsStream("/prof_name_list.txt")
     val lines = Source.fromInputStream(fileStream).getLines
@@ -89,6 +97,7 @@ import scala.io.Source
     * @return
     */
   def profMap(): util.HashMap[String,String] = {
+    logger.info("In profMap()")
     val uicProfMap = new util.HashMap[String,String]()
     val fileStream = getClass.getResourceAsStream("/prof_name_list.txt")
     val lines = Source.fromInputStream(fileStream).getLines
@@ -107,10 +116,12 @@ import scala.io.Source
     * @return updated author list with alias replaced to avoid differentiating same author
     */
    def replaceAuthorAlias(authors: Seq[Text]): util.ArrayList[Text] ={
+     logger.info("Replacing author alias with author name")
      val uicProfMap = profMap()
      val updatedAuthors = new util.ArrayList[Text]
      authors.foreach(author =>{
        if(uicProfMap.containsKey(author.toString)) {
+         logger.info("replacing ... "+author.toString)
          updatedAuthors.add(new Text(uicProfMap.get(author.toString)))
        }else{
          updatedAuthors.add(author)
@@ -126,15 +137,13 @@ import scala.io.Source
     * @return List of pairs for elements in list
     */
    def createPairs(article: util.ArrayList[Text]): List[(Text,Text)] = {
-     /*if (article.size==1){
-       return List((article.get(0),article.get(0)))
-     }*/
-
+     logger.debug("creating pairs from a list: "+article)
      val pairs = article.asScala.toList.combinations(2)
        .map { case List(a, b) =>
 
          new Tuple2 (a, b) }.toList
 
+     logger.debug("Pairs created: "+pairs)
      return pairs
    }
 
@@ -144,6 +153,7 @@ import scala.io.Source
     * @return String of cleaned XML
     */
    def replaceUnicode(value: Text): String ={
+     logger.debug("Replacing unicode characters");
      val text =value.toString()
      val unicode = Map("&Agrave;"->   "A",
        "&Aacute;"->   "A",
