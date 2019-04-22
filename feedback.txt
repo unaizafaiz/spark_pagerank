@@ -1,0 +1,9 @@
+Hi Unaiza:
+It is pleasure to grade your homework, as usual. It is superbly done, and small comments are to make sure that you use proper annotations/markup in your README, and it is poorly readable now.
+
+Also, it would help if you explain your design, the choice of transformation in your document. I suggest that you do that for your prospective employers.
+
+You earned the full grade, 5% + 3% bonus. Congratulations!
+
+Thank you,
+Mark
