@@ -16,9 +16,9 @@ OR
 
 6. In order to run the program locally, setup apache spark locally and navigate to the cloned repository on your terminal
 7. Run the following command
-`$SPARK_HOME/bin/spark-submit --class PageRank --master "<worker_node_url>" target/scala-2.11/unaiza_faiz_hw5-assembly-0.1.jar <path_of_input_file> <path_of_output_directory> <no_of_pagerank_iterations>`
+`$SPARK_HOME/bin/spark-submit --class PageRank --master "spark://HOST:PORT" target/scala-2.11/unaiza_faiz_hw5-assembly-0.1.jar <path_of_input_file> <path_of_output_directory> <no_of_pagerank_iterations>`
 Eg. 
-`$SPARK_HOME/bin/spark-submit --class PageRank --master "<worker_node_url>" target/scala-2.11/unaiza_faiz_hw5-assembly-0.1.jar ~/Documents/dblp.xml ./src/main/resources/output 10`
+`$SPARK_HOME/bin/spark-submit --class PageRank --master "spark://[master-hostname]:7077" target/scala-2.11/unaiza_faiz_hw5-assembly-0.1.jar ~/Documents/dblp.xml ./src/main/resources/output 10`
 8. The output of the spark application can be found in the Output directory location provided in the command above
 
 ##Input File
