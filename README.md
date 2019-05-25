@@ -1,4 +1,4 @@
-# Homework 5 - PageRank using Apache Spark
+# PageRank using Apache Spark
 ## By Unaiza Faiz (651052450)
 
 ## Steps to run the program
